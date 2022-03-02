@@ -4,7 +4,6 @@ const searchPhone = () => {
     const searchText = searchField.value;
     // clear data
     searchField.value = '';
-    // document.getElementById('error-message').style.display = 'none';
     if (searchText == '') {
         document.getElementById('error-message').style.display = 'block';
         document.getElementById('error-message').innerText = "No Phone Found !!!";
@@ -21,4 +20,5 @@ const searchPhone = () => {
 
 const displayError = error => {
     document.getElementById('error-message').style.display = 'block';
+    document.getElementById('error-message').innerText = "No Phone Found !!!";
 }
