@@ -5,3 +5,7 @@ body{
 .color{
     color: #31A5AC;
 }
+.image-size{
+    width: auto;
+    height: 75%;
+}
