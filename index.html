@@ -28,7 +28,16 @@
     </header>
 
     <main>
-
+        <!-- phone search area -->
+        <div class="input-group mb-3 w-50 mx-auto">
+            <input id="search-field" type="text" class="form-control" placeholder="Search for phone"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button onclick="searchPhone()" class="btn btn-outline-secondary color" type="button"
+                id="button-search">search</button>
+        </div>
+        <div>
+            <h1 id="error-message" class="color text-center"></h1>
+        </div>
     </main>
     <!-- js file -->
     <script src="js/phone-search.js"></script>
