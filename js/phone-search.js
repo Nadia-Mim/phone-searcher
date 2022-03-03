@@ -4,6 +4,7 @@ const searchPhone = () => {
     const searchText = searchField.value;
     // clear data
     searchField.value = '';
+    document.getElementById('phone-details').textContent = '';
     if (searchText == '') {
         displayError()
     }
