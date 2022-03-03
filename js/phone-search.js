@@ -59,9 +59,9 @@ const displayPhoneDetail = phone => {
     phoneDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card');
-    if (phone.releaseDate = '') {
+    if (phone.releaseDate == '') {
         div.innerHTML = `
-        <img src="${phone.image}" class="card-img-top image-size" alt="...">
+        <img src="${phone.image}" class="card-img-top image-size m-3" alt="...">
         <div class="card-body">
             <h3 class="card-title">${phone.name}</h3>
             <h3 class="card-text">${phone.brand}</h3>
@@ -72,11 +72,11 @@ const displayPhoneDetail = phone => {
     }
     else {
         div.innerHTML = `
-        <img src="${phone.image}" class="card-img-top image-size" alt="...">
+        <img src="${phone.image}" class="card-img-top image-size m-3" alt="...">
         <div class="card-body">
             <h3 class="card-title">${phone.name}</h3>
             <h3 class="card-text">${phone.brand}</h3>
-            <h3 class="card-text">${phone.releaseDate}</h3> 
+            <h3 class="card-title">${phone.releaseDate}</h3> 
         </div>
         `;
         phoneDetails.appendChild(div);
