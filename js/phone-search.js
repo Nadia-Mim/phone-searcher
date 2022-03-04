@@ -28,11 +28,11 @@ const displaySearchResult = phones => {
     if (phones.length == 0) {
         displayError();
     }
-
-    phones.data.forEach(phone => {
-        const div = document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML = `
+    if (phones.data.length <= 20) {
+        phones.data.forEach(phone => {
+            const div = document.createElement('div');
+            div.classList.add('col');
+            div.innerHTML = `
         <div onclick="loadPhoneDetail('${phone.slug}')" class="card h-100 rounded">
             <img src="${phone.image}" class="card-img-top image-size m-3" alt="...">
             <div class="card-body">
@@ -41,8 +41,30 @@ const displaySearchResult = phones => {
             </div>
         </div>
         `;
-        searchResult.appendChild(div);
-    })
+            searchResult.appendChild(div);
+        })
+    }
+    else {
+        let count = 0;
+        phones.data.forEach(phone => {
+            if (count < 20) {
+                const div = document.createElement('div');
+                div.classList.add('col');
+                div.innerHTML = `
+                <div onclick="loadPhoneDetail('${phone.slug}')" class="card h-100 rounded">
+                <img src="${phone.image}" class="card-img-top image-size m-3" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${phone.phone_name}</h5>
+                    <h5 class="card-title">${phone.brand}</h5>
+                </div>
+                </div>
+                `;
+                searchResult.appendChild(div);
+            }
+            count++;
+        })
+
+    }
 }
 
 const loadPhoneDetail = slug => {
@@ -68,6 +90,19 @@ const displayPhoneDetail = phone => {
             <h4 class="card-text">Release Date: No release date available</h4>
             <h4 class="card-text">Main Features:</br> ${displayMainFeatures(phone.mainFeatures)}</h4> 
             <h4 class="card-text">Others:</br> ${displayOthers(phone.others)}</h4>  
+        </div>
+        `;
+        phoneDetails.appendChild(div);
+    }
+    else if (phone.others == '' || !('others' in phone)) {
+        div.innerHTML = `
+        <img src="${phone.image}" class="card-img-top image-size m-3" alt="...">
+        <div class="card-body">
+            <h4 class="card-title">Name: ${phone.name}</h4>
+            <h4 class="card-text">Brand: ${phone.brand}</h4>
+            <h4 class="card-text">Release Date: ${phone.releaseDate}</h4> 
+            <h4 class="card-text">Main Fatures:</br> ${displayMainFeatures(phone.mainFeatures)}</h4> 
+            <h4 class="card-text">Others: No other details available</h4> 
         </div>
         `;
         phoneDetails.appendChild(div);
